@@ -37,7 +37,11 @@ function sleep(ms) {
     if (buffer === '@@') {
       buffer = ''
 
-      // TODO: Delete the last 2 written characters (the "@@")
+      // Add '\u200B' character 4000 times to emulate a spoiler behavior
+	  const zeroWidthSpace = '\u200B'.repeat(4000)
+	  document.execCommand('insertText', false, zeroWidthSpace)
+	  document.execCommand('insertText', false, '@')
+	  document.execCommand('insertText', false, '@')
 
       try {
         await tagEveryone()
